@@ -17,6 +17,7 @@ module.exports = merge(baseConfig, {
         port: 3000,
         compress: true,
         open: true,
+        historyApiFallback: true,
         client: {
             logging: 'error',
             overlay: {

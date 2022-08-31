@@ -76,7 +76,7 @@ module.exports = {
             filename: 'static/css/[name].[hash:8].css',
         }),
         new EslintWebpackPlugin({
-            extensions: ['.jsx', '.tsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
             fix: true,
             failOnError: true,
             emitError: true,
