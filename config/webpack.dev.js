@@ -11,18 +11,20 @@ module.exports = merge(baseConfig, {
         publicPath: '/'
     },
     performance: {
-        hints: 'warning'
+        hints: false
     },
     devServer: {
         port: 3000,
-        hot: true,
-        open: true,
         compress: true,
-        historyApiFallback: {
-            rewrites: [{ from: /./, to: '/index.html' }]
+        open: true,
+        client: {
+            logging: 'error',
+            overlay: {
+                errors: true,
+                warnings: true,
+            },
         },
-        watchFiles: {
-            paths: ['src/*', 'index.html']
-        },
+        watchFiles: ['src/**/*.vue', 'public/**/*', 'src/**/*.ts'],
+        hot: true,
     }
 })
