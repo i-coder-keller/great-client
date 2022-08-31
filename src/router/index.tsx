@@ -19,6 +19,11 @@ export const routers: Array<Router> = [
         name: 'VideoEditor',
         path: '/videoEditor',
         element: LazyLoad(lazy(() => import('@/pages/videoEditor')))
+      },
+      {
+        name: 'ImageCompress',
+        path: '/imageCompress',
+        element: LazyLoad(lazy(() => import('@/pages/imageCompress')))
       }
     ]
   },
