@@ -1,10 +1,12 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import LayoutHeader from './layoutHeader'
+import LayoutMain from './layoutMain'
+import './layout.less'
 export default () => {
   return (
-    <>
-      <Link to={'/videoEditor'}>videoEditor</Link>
-      <Outlet />
-    </>
+    <main className="great-layout">
+      <LayoutHeader></LayoutHeader>
+      <LayoutMain></LayoutMain>
+    </main>
   )
 }

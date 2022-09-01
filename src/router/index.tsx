@@ -16,6 +16,11 @@ export const routers: Array<Router> = [
     element: LazyLoad(lazy(() => import('@/layout'))),
     children: [
       {
+        name: 'Main',
+        path: '/',
+        element: LazyLoad(lazy(() => import('@/pages/main')))
+      },
+      {
         name: 'VideoEditor',
         path: '/videoEditor',
         element: LazyLoad(lazy(() => import('@/pages/videoEditor')))
@@ -34,7 +39,7 @@ export const routers: Array<Router> = [
 ]
 
 const Routers = () => {
-  return useRoutes(routers);
+  return useRoutes(routers)
 }
 
 export default Routers

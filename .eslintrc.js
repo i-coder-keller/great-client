@@ -17,6 +17,7 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        'semi': [2, 'never'],
         'eqeqeq': 'error',
         'no-empty-function': 'error',
         'no-multi-spaces': 'error',
