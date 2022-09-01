@@ -1,17 +1,13 @@
 import React from "react"
 import { cards } from "./cards"
+import FunctionCom from './module/function'
 import "./card.less"
 export default () => {
 
   return (
-    <div className='cards'>
+    <div className='main-cards-container'>
       {
-        cards.map(card => (
-          <div className="cards__item">
-            <div className="cards__icon" style={{backgroundImage: card.icon}}></div>
-            <div className="cards__title">{card.name}</div>
-          </div>
-        ))
+        cards.map(curd => <FunctionCom key={curd.path} path={curd.path} name={curd.name} icon={curd.icon} />)
       }
     </div>
   )
