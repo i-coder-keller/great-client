@@ -3,6 +3,13 @@ interface ResultType {
   "ArrayBuffer": ArrayBuffer,
 }
 
+interface VideoInfo {
+  width: number;
+  height: number;
+  volume: number;
+  duration: number;
+}
+
 /**
  * 文件转Blog、ArrayBuffer
  * @param file
@@ -32,3 +39,23 @@ export const file2Type = <T extends keyof ResultType>(file: File, type: T): Prom
     fileRead.readAsArrayBuffer(file)
   })
 }
+
+/**
+ * 计算视频信息
+ * @param source
+ */
+export const computedVideoInfo = (source: string): Promise<VideoInfo> => new Promise((resolve, reject) => {
+  const video = document.createElement('video')
+  video.setAttribute("src", source)
+  video.addEventListener("loadedmetadata", () => {
+    resolve({
+      width: video.videoWidth,
+      height: video.videoHeight,
+      duration: video.duration,
+      volume: video.volume,
+    })
+  })
+  video.addEventListener("error", evt => {
+    reject(evt)
+  })
+})

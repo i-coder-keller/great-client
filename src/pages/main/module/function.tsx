@@ -1,6 +1,5 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import Toastify from 'toastify-js'
 
 interface Props {
     icon: string;
@@ -18,21 +17,10 @@ export default (props: Props) => {
   }
   const fileChange: React.ChangeEventHandler<HTMLInputElement> = async e => {
     const s = await props.validate(e.target.files[0])
-    if(s) {
-      console.log(s)
-      Toastify({
-        text: "This is a toast",
-        duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-      }).showToast()
+    if (s) {
+      goFunction()
+    } else {
+      alert('文件格式不正确')
     }
   }
   return (
