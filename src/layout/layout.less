@@ -9,11 +9,45 @@
     top: 0;
     left: 0;
     right: 0;
-    &-content {
+    z-index: 1000;
+    &-container {
       width: 100%;
       max-width: 1660px;
       height: 100%;
       margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      &-logo {
+        width: 60px;
+        height: 60px;
+        background-image: url("../assets/layout/logo.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+        cursor: pointer;
+      }
+      &-buttonGroup {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        &-tellMe {
+          height: 25px;
+          width: 60px;
+          border: 1px solid #FFFFFF;
+          border-radius: 5px;
+          text-align: center;
+          line-height: 25px;
+          font-size: 12px;
+          font-family: "Round-zh", serif;
+          color: #f7f9fa;
+          padding: 0;
+          background-color: #2f3640;
+          cursor: pointer;
+        }
+      }
     }
   }
   &-main {

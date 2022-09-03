@@ -8,11 +8,7 @@ export const videoAccept = ".webm,.mp4,.ogg"
  * @param file
  */
 export const validateVideo = async (file: File) => {
-  const [ arrayBuffer , error ] = await file2Type(file, "ArrayBuffer")
-  if (error !== null) {
-    console.warn(error)
-    return false
-  }
+  const arrayBuffer = await file2Type(file, "ArrayBuffer")
   const typeInfo = await fileTypeFromBuffer(arrayBuffer)
   return videoMimeTypes.includes(typeInfo.mime)
 }
