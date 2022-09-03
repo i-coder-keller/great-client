@@ -1,22 +1,32 @@
 .great-video-editor-container {
   width: 100%;
   height: 100%;
-  background-color: #ecf0f1;
+  padding-top: 70px;
+  background-color: #30336b;
   &-controlConsole {
     width: 100%;
     height: 500px;
-    padding-top: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     &-playerContainer {
       height: 400px;
       box-sizing: border-box;
-      border: 1px solid black;
       width: auto;
       video {
         height: 100%;
+      }
+    }
+    &-playControl {
+      margin-top: 20px;
+      display: flex;
+      .broadcastControl {
+        width: 30px;
+        height: 30px;
+        background-position: center center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
       }
     }
   }
