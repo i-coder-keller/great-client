@@ -10,6 +10,12 @@ interface VideoInfo {
   duration: number;
 }
 
+interface TimeFormat {
+  m: string;
+  s: string;
+  ms: string;
+}
+
 /**
  * 文件转Blog、ArrayBuffer
  * @param file
@@ -59,3 +65,18 @@ export const computedVideoInfo = (source: string): Promise<VideoInfo> => new Pro
     reject(evt)
   })
 })
+/**
+ * 格式化时长
+ * @param second
+ */
+export const formatTime = (second: number): TimeFormat => {
+  const poor = Math.floor(Number((second % 1).toFixed(3)) * 1000)
+  const ms = poor < 10 ? `00${poor}`: poor < 100 ? `0${poor}` : `${poor}`
+  const s = `${Math.floor(second % 60) < 10 ? `0${Math.floor(second % 60)}` : Math.floor(second % 60)}`
+  const m = `${Math.floor(second / 60) < 10 ? `0${Math.floor(second / 60)}` : Math.floor(second / 60)}`
+  return {
+    m,
+    s,
+    ms
+  }
+}

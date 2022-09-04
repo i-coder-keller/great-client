@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "file-type": "^18.0.0",
+    "hint.css": "^2.7.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "normalize.css": "^8.0.1",
     "pixi.js": "^6.5.2",
