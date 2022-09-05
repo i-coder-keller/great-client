@@ -3,6 +3,7 @@ import Play from "@/assets/videoeditor/play.svg"
 import Pause from "@/assets/videoeditor/pause.svg"
 import { formatTime } from "@/utils"
 import { menus } from "./model/menus"
+import Volume from "./volume"
 import "./index.less"
 import "./model/menus.less"
 let timer: string | number | NodeJS.Timer = null
@@ -90,6 +91,11 @@ export default () => {
                 )
               })
             }
+          </div>
+        </div>
+        <div className="components">
+          <div className="components-target">
+            <Volume></Volume>
           </div>
         </div>
       </div>

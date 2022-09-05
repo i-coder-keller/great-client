@@ -2,7 +2,6 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HappyPack = require('happypack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const EslintWebpackPlugin = require('eslint-webpack-plugin')
 const WebpackBar = require('webpackbar')
@@ -51,19 +50,19 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: "less-loader", options: { lessOptions: { javascriptEnabled: true } } },]
       },
       { test: /\.(jpe?g|svg|png)$/, type: 'asset', generator: { filename: 'static/img/[name].[hash:6][ext]' }, parser: { dataUrlCondition: { maxSize: 10 * 1024 } } },
       { test: /\.(tff|woff|ttf)$/, type: "asset", generator: { filename: "static/fonts/[name].[hash:6][ext]", }, parser: { dataUrlCondition: { maxSize: 8 * 1024, }, }, },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: [{loader: 'ts-loader', options: { transpileOnly: true, logInfoToStdOut: true, logLevel: 'error'}}]
+        use: ['babel-loader', { loader: 'ts-loader', options: { transpileOnly: true } }]
       },
       {
         test: /\.(js|jsx)&/,
         exclude: /node_modules/,
-        use: ['happy pack/loader?id=babel']
+        use: ['babel-loader']
       }
     ]
   },
@@ -83,10 +82,6 @@ module.exports = {
       failOnError: true,
       emitError: true,
       quiet: true,
-    }),
-    new HappyPack({
-      id: 'babel',
-      use: ['babel-loader']
     }),
     new ForkTsCheckerWebpackPlugin(),
     new WebpackBar(),
