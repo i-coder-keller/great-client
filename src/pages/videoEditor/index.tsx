@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react"
 import Play from "@/assets/videoeditor/play.svg"
 import Pause from "@/assets/videoeditor/pause.svg"
 import { formatTime } from "@/utils"
-import { menus } from "./model/menus"
+import { menus, Selected_Menu } from "./model/menus"
 import Volume from "./volume"
+import Speed from "./speed"
 import "./index.less"
 import "./model/menus.less"
 let timer: string | number | NodeJS.Timer = null
@@ -12,7 +13,7 @@ export default () => {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [state, setState] = useState(false)
-  const [selectedMenu, setSelectedMenu] = useState("")
+  const [selectedMenu, setSelectedMenu] = useState<Selected_Menu>("volume")
   const videoPlayer = useRef<HTMLVideoElement>()
   const loadedMetadata = () => {
     setDuration(videoPlayer.current.duration)
@@ -50,6 +51,18 @@ export default () => {
   const endedOrPause = () => {
     clearInterval(timer)
   }
+  /**
+   * 设置视频音量
+   */
+  const setVideoVolume = (volume: number) => {
+    videoPlayer.current.volume = volume
+  }
+  /**
+   * 设置视频播放速度
+   */
+  const setVideoSpeed = (speed: number) => {
+    videoPlayer.current.playbackRate = speed
+  }
   return (
     <div className="great-video-editor-container">
       <div className="great-video-editor-container-controlConsole">
@@ -86,7 +99,7 @@ export default () => {
                     }
                     key={menu.mark}
                     aria-label={menu.ariaLabel}
-                    onClick={() => setSelectedMenu(menu.mark)}
+                    onClick={() => setSelectedMenu(menu.mark as Selected_Menu)}
                   />
                 )
               })
@@ -95,7 +108,8 @@ export default () => {
         </div>
         <div className="components">
           <div className="components-target">
-            <Volume></Volume>
+            {selectedMenu === "volume" && <Volume setVideoVolume={setVideoVolume}></Volume>}
+            {selectedMenu === "speed" && <Speed setVideoSpeed={setVideoSpeed}></Speed>}
           </div>
         </div>
       </div>
