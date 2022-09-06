@@ -24,14 +24,14 @@ const menus = [
     className: 'video-control-menus hint--top hint--rounded',
     unselectedClassName: 'video-cut-duration',
     selectedClassName: 'video-cut-duration-selected video-control-menus-selected',
-    mark: 'cutDuration',
-    ariaLabel: '时长剪裁'
+    mark: 'clipVideo',
+    ariaLabel: '视频剪裁'
   },
   {
     className: 'video-control-menus hint--top hint--rounded',
     unselectedClassName: 'video-cut-mark',
     selectedClassName: 'video-cut-mark-selected video-control-menus-selected',
-    mark: 'cutMark',
+    mark: 'clipMark',
     ariaLabel: '水印裁剪'
   },
   {
@@ -49,7 +49,7 @@ const menus = [
     ariaLabel: '图片水印'
   }
 ]
-type Selected_Menu = 'volume' | 'cutMark' | 'cutVideo' | 'speed' | 'text' | 'image' | 'voice'
+type Selected_Menu = 'volume' | 'clipMark' | 'clipVideo' | 'speed' | 'text' | 'image' | 'voice'
 
 export {
   menus,

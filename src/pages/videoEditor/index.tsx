@@ -5,6 +5,7 @@ import { formatTime } from "@/utils"
 import { menus, Selected_Menu } from "./model/menus"
 import Volume from "./volume"
 import Speed from "./speed"
+import Clip from "./clip"
 import "./index.less"
 import "./model/menus.less"
 let timer: string | number | NodeJS.Timer = null
@@ -110,6 +111,7 @@ export default () => {
           <div className="components-target">
             {selectedMenu === "volume" && <Volume setVideoVolume={setVideoVolume}></Volume>}
             {selectedMenu === "speed" && <Speed setVideoSpeed={setVideoSpeed}></Speed>}
+            {selectedMenu === "clipVideo" && <Clip source={source} ></Clip>}
           </div>
         </div>
       </div>

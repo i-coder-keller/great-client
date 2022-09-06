@@ -3,7 +3,7 @@ interface ResultType {
   "ArrayBuffer": ArrayBuffer,
 }
 
-interface VideoInfo {
+export interface VideoInfo {
   width: number;
   height: number;
   volume: number;
