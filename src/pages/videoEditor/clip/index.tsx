@@ -4,7 +4,6 @@ import Clip from "@/components/Clip"
 import { computedVideoInfo, VideoInfo } from "@/utils"
 interface Props {
   source: string;
-
 }
 const ClipVideo = (props: Props) => {
   const { source } = props

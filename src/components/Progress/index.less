@@ -8,15 +8,17 @@
   height: 3px;
   border-radius: 3px;
   cursor: pointer;
+  transition: height .3s ease-in-out;
   .progress-container-value {
     height: 3px;
     border-radius: 3px;
+    transition: height .3s ease-in-out;
   }
 }
 }
-.progress-container:hover.progress-container-base {
+.progress-container:hover .progress-container-base {
   height: 5px;
 }
-.progress-container:hover.progress-container-value {
+.progress-container:hover .progress-container-value {
   height: 5px;
 }
