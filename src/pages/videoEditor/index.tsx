@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import Play from "@/assets/videoeditor/play.svg"
 import Pause from "@/assets/videoeditor/pause.svg"
-import { formatTime } from "@/utils"
+import Progress from "@/components/Progress"
 import { menus, Selected_Menu } from "./model/menus"
 import Volume from "./volume"
 import Speed from "./speed"
@@ -69,22 +69,12 @@ export default () => {
       <div className="great-video-editor-container-controlConsole">
         <div className="great-video-editor-container-controlConsole-playerContainer">
           <video ref={videoPlayer} src={source} onLoadedMetadata={loadedMetadata} onEnded={endedOrPause} onPlay={videoStarPlay}/>
-        </div>
-        <div className="great-video-editor-container-controlConsole-playControl">
-          <div className="broadcastControl" style={{backgroundImage: `url(${state ? Pause : Play})`}} onClick={broadcastControl}></div>
-          <div className="videoTime">
-            <div className="time split">
-              <div className="minute">{formatTime(currentTime).m} "</div>
-              <div className="minute">{formatTime(currentTime).s} "</div>
-              <div className="minute">{formatTime(currentTime).ms}</div>
-            </div>
-            <div className="time">
-              <div className="minute">{formatTime(duration).m} "</div>
-              <div className="minute">{formatTime(duration).s} "</div>
-              <div className="minute">{formatTime(duration).ms}</div>
-            </div>
+          <Progress value={50} activateColor="#ee5253" progressColor="rgba(0, 0, 0, .2)" />
+          <div className="great-video-editor-container-controlConsole-playControl">
+            <div className="broadcastControl" style={{backgroundImage: `url(${state ? Pause : Play})`}} onClick={broadcastControl}></div>
           </div>
         </div>
+
       </div>
       <div className="controlsSpace">
         <div className="controls">

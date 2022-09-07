@@ -3,24 +3,28 @@
   height: 100%;
   padding-top: 70px;
   box-sizing: border-box;
-  background-color: #30336b;
+  background-color: #000;
   &-controlConsole {
     width: 100%;
-    height: 500px;
+    height: 450px;
     display: flex;
     align-items: center;
     flex-direction: column;
     &-playerContainer {
-      height: 400px;
+      height: 500px;
       box-sizing: border-box;
+      box-shadow:rgba(0,0,0,.3) 0 0 15px;
+      border-radius: 5px;
+      overflow: hidden;
       width: auto;
       video {
-        height: 100%;
+        height: 400px;
       }
     }
     &-playControl {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
+      justify-content: center;
       .broadcastControl {
         width: 30px;
         height: 30px;
@@ -28,31 +32,6 @@
         background-size: 100% 100%;
         background-repeat: no-repeat;
         cursor: pointer;
-      }
-      .videoTime {
-        margin-left: 50px;
-        width: auto;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        .time {
-          display: flex;
-          line-height: 30px;
-          color: #FFFFFF;
-          margin: 0 20px;
-          position: relative;
-          .minute {
-            width: 40px;
-            text-align: center;
-          }
-        }
-        .split:after {
-          content: "/";
-          color: #FFFFFF;
-          position: absolute;
-          height: 100%;
-          right: -21px;
-        }
       }
     }
 
