@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react"
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react"
 import Play from "@/assets/videoeditor/play.svg"
 import Pause from "@/assets/videoeditor/pause.svg"
 import Progress from "@/components/Progress"
@@ -58,12 +58,7 @@ export default () => {
   const endedOrPause = () => {
     clearInterval(timer)
   }
-  /**
-   * 设置视频音量
-   */
-  const setVideoVolume = useCallback((volume: number) => {
-    videoPlayer.current.volume = volume
-  }, [])
+  const videoCurrent = useMemo(() => videoPlayer.current, [videoPlayer])
   /**
    * 设置视频播放速度
    */
@@ -113,7 +108,7 @@ export default () => {
         </div>
         <div className="components">
           <div className="components-target">
-            {selectedMenu === "volume" && <Volume setVideoVolume={setVideoVolume}></Volume>}
+            {selectedMenu === "volume" && <Volume mediaElem={videoCurrent}></Volume>}
             {selectedMenu === "speed" && <Speed setVideoSpeed={setVideoSpeed}></Speed>}
             {selectedMenu === "clipVideo" && <Clip source={source} ></Clip>}
           </div>
