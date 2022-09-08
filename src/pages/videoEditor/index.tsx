@@ -83,7 +83,7 @@ export default () => {
       <div className="great-video-editor-container-controlConsole">
         <div className="great-video-editor-container-controlConsole-playerContainer">
           <video ref={videoPlayer} src={source} onLoadedMetadata={loadedMetadata} onEnded={endedOrPause} onPlay={videoStarPlay}/>
-          <Progress value={progress} activateColor="#ee5253" progressColor="rgba(0, 0, 0, .2)" setVideoCurrentTime={setVideoCurrentTime} />
+          <Progress value={progress} activateColor="#ee5253" progressColor="rgba(0, 0, 0, .2)" duration={duration} setVideoCurrentTime={setVideoCurrentTime} />
           <div className="great-video-editor-container-controlConsole-playControl">
             <div className="broadcastControl" style={{backgroundImage: `url(${state ? Pause : Play})`}} onClick={broadcastControl}></div>
           </div>

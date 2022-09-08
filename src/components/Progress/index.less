@@ -1,8 +1,24 @@
 .progress-container {
-  width: 100%;
+  width: 95%;
   height: 5px;
+  margin: auto;
   box-sizing: border-box;
-  overflow: hidden;
+  position: relative;
+  .progress-tip {
+    position: absolute;
+    opacity: 0;
+    font-size: 12px;
+    min-width: 10px;
+    text-align: center;
+    top: 0;
+    padding: 5px 3px;
+    background-color: rgba(0, 0, 0);
+    color: #FFFFFF;
+    border-radius: 2px;
+    white-space:nowrap;
+    transform: scale(0.83) translateY(-120%) translateX(-50%);
+    transition: opacity .3s ease-in-out;
+  }
 .progress-container-base {
   width: 100%;
   height: 3px;
@@ -21,4 +37,8 @@
 }
 .progress-container:hover .progress-container-value {
   height: 5px;
+}
+.progress-container:hover .progress-tip {
+  display: unset;
+  opacity: 1;
 }
