@@ -1,6 +1,27 @@
 .clip-container {
   width: 100%;
   height: auto;
+  overflow-x: scroll;
   box-sizing: border-box;
-  position: relative;
-}
+   .workSpace {
+     width: auto;
+     position: relative;
+     padding: 20px 0;
+     &-controls {
+       width: calc(100% + 4px);
+       height: calc(100% - 40px);
+       position: absolute;
+       top: 18px;
+       border: 2px solid greenyellow;
+       border-radius: 3px;
+     }
+     &-frames {
+       width: auto;
+       height: 100%;
+       display: flex;
+       img {
+         height: 100%;
+       }
+     }
+   }
+  }

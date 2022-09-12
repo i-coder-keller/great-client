@@ -15,13 +15,6 @@ const menus = [
   },
   {
     className: 'video-control-menus hint--top hint--rounded',
-    unselectedClassName: 'video-cut',
-    selectedClassName: 'video-cut-selected video-control-menus-selected',
-    mark: 'cutVideo',
-    ariaLabel: '视频裁剪'
-  },
-  {
-    className: 'video-control-menus hint--top hint--rounded',
     unselectedClassName: 'video-cut-duration',
     selectedClassName: 'video-cut-duration-selected video-control-menus-selected',
     mark: 'clipVideo',

@@ -16,10 +16,15 @@ interface TimeFormat {
   ms: string;
 }
 
+export interface Frame {
+  image: string;
+  s: number;
+}
+
 /**
  * 文件转Blog、ArrayBuffer
- * @param file
- * @param type
+ * @param file { File }
+ * @param type { "Blob" | "ArrayBuffer" }
  */
 export const file2Type = <T extends keyof ResultType>(file: File, type: T): Promise<ResultType[T] | never> => {
   return new Promise(resolve => {
@@ -48,7 +53,7 @@ export const file2Type = <T extends keyof ResultType>(file: File, type: T): Prom
 
 /**
  * 计算视频信息
- * @param source
+ * @param source { string }
  */
 export const computedVideoInfo = (source: string): Promise<VideoInfo> => new Promise((resolve, reject) => {
   const video = document.createElement('video')
@@ -79,4 +84,26 @@ export const formatTime = (second: number): TimeFormat => {
     s,
     ms
   }
+}
+
+/**
+ * 视频解析帧图
+ * @param url {string}
+ * @param s {number}
+ */
+export const videoParseFrame = (url: string, s: number): Promise<Frame> => {
+  const video = document.createElement('video')
+  video.setAttribute("src", url)
+  video.currentTime = s
+  return new Promise(resolve => {
+    video.addEventListener('loadeddata',() => {
+      const canvas = document.createElement('canvas')
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+      ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
+      const image = canvas.toDataURL('image/jpeg')
+      resolve({image, s})
+    })
+  })
 }

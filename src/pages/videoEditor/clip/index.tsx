@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import "./index.less"
 import Clip from "@/components/Clip"
 import { computedVideoInfo, VideoInfo } from "@/utils"
@@ -14,24 +14,30 @@ const ClipVideo = (props: Props) => {
     const videoInfo = await computedVideoInfo(source)
     setVideoInfo(videoInfo)
   }
-  const [videoInfo, setVideoInfo] = useState<VideoInfo>()
+  const [videoInfo, setVideoInfo] = useState<VideoInfo>({
+    duration: 0,
+    width: 0,
+    height: 0,
+    volume: 1
+  })
   const setStartTime = (startTime: number) => {
     console.log(startTime)
   }
   const setEndTime = (startTime: number) => {
     console.log(startTime)
   }
+  const videoInfoCallback = useCallback(() => videoInfo, [videoInfo] )
   return (
     <div className="control-clip-container">
       <Clip
-        duration={videoInfo.duration}
+        duration={videoInfoCallback().duration}
         frameGap={5}
         startTime={0}
-        endTime={videoInfo.duration}
+        endTime={videoInfoCallback().duration}
         setStartTime={setStartTime}
         setEndTime={setEndTime}
         source={source}
-        frameHeight={100}
+        frameHeight={60}
       />
     </div>
   )
