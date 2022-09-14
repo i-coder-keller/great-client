@@ -10,15 +10,35 @@
      &-controls {
        width: calc(100% + 4px);
        height: calc(100% - 40px);
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
        position: absolute;
        top: 18px;
-       border: 2px solid greenyellow;
+       border: 2px solid #01c322;
        border-radius: 3px;
+       padding: 0 5px;
+       cursor: pointer;
+       user-select: none;
+       .control {
+         width: 6px;
+         height: 70%;
+         border-radius: 3px;
+         border: 1px solid #000;
+         background-color: #FFF;
+         cursor: ew-resize;
+         opacity: 0;
+         transition: opacity ease-in-out 200ms;
+       }
+       &:hover {
+         .control {
+           opacity: 1;
+         }
+       }
      }
      &-frames {
-       width: auto;
-       height: 100%;
        display: flex;
+       width: fit-content;
        img {
          height: 100%;
        }
